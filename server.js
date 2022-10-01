@@ -3,6 +3,7 @@ const expressHandlebars = require('express-handlebars');
 const handlebars = expressHandlebars.create({});
 const app = express();
 const routes = require('./controllers/routes');
+const path = require('path');
 
 const PORT = process.env.PORT || 3001;
 
