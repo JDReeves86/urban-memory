@@ -1,34 +1,35 @@
-const { Comment } = require('../models/Comment.js');
+const Comment = require('../models/Comment.js');
 
 const commentData = [
     {
-       post: 'Remember when we fought in the thunderdome? lol I totes rocked you bro, I miss you!',
-       user_id: 1,
-       post_id: 1
+        comment: 'Remember when we fought in the thunderdome? lol I totes rocked you bro, I miss you!',
+        user_id: 1,
+        post_id: 1
     },
     {
-        post: "You're a weird dude..",
+        comment: "You're a weird dude..",
         user_id: 1,
         post_id: 3
     },
     {
-        post: 'Come back to GasTown! We should have a beer.',
+        comment: 'Come back to GasTown! We should have a beer.',
         user_id: 2,
         post_id: 2
      },
      {
-         post: "Are you in a cult?",
-         user_id: 2,
-         post_id: 3
-     },    {
-        post: 'Mediocre!!',
+        comment: "Are you in a cult?",
+        user_id: 2,
+        post_id: 3
+     },    
+     {
+        comment: 'Mediocre!!',
         user_id: 3,
         post_id: 1
      },
      {
-         post: "Valhalla awaits!!",
-         user_id: 3,
-         post_id: 2
+        comment: "Valhalla awaits!!",
+        user_id: 3,
+        post_id: 2
      },
 ]
 
