@@ -15,6 +15,24 @@ router.get('/signup', (req, res) => {
     } catch(err) {res.status(500).json(err)}
 })
 
+router.get('/signin', (req, res) => {
+    try {
+        res.status(200).render('signin')
+    } catch(err) {res.status(500).json(err)}
+})
+
+router.get('/post', (req, res) => {
+    try {
+        res.status(200).render('blogpost')
+    } catch(err) {res.status(500).json(err)}
+})
+
+router.get('/dashboard', (req, res) => {
+    try {
+        res.status(200).render('dashboard')
+    } catch(err) {res.status(500).json(err)}
+})
+
 router.get('/:num', async (req, res) => {
     try {
         res.status(200).json({message: "sweet", hit: req.params.num})
