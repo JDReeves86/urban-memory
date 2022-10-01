@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>It's blog, it's blog, it's better than bad, it's good!</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+    <link href="../../public/styles.css" rel="stylesheet">
+</head>
+<body>
+    <header class="level has-background-primary-dark has-text-light m-0">
+        <div class="level-left">
+            <h1 class="is-size-1 p-5 has-text-weight-bold ">Tech Blog</h1>
+        </div>
+    </header>
+    <nav class="navbar has-background-primary" role="navigation">
+        <div class="navbar-menu">
+            <div class="navbar-start">
+                <a class="navbar-item has-text-dark" id="homeBtn">
+                    Home
+                </a>
+                <a class="navbar-item has-text-dark" id="DashboardBtn">
+                    Dashboard
+                </a>
+                <a class="navbar-item has-text-dark" id="loginBtn">
+                    Login
+                </a>
+    
+            </div>
+            <div class="navbar-end">
+                <a class="navbar-item has-text-dark" id="logoutBtn">
+                    Logout
+                </a>
+            </div>
+        </div>
+    </nav>
+    <main>
+        {{{ body }}}
+    </main>
+    <footer class="footer has-background-primary-dark has-text-light">
+        <div class="content has-text-centered">
+            <p class="is-size-4">Thank you for posting your thoughts! See you again soon.</p>
+        </div>
+    </footer>
+    <script src="../../public/scripts.js" rel="text/javascript"></script>
+</body>
+</html>
