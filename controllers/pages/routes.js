@@ -1,5 +1,6 @@
 const express = require('express');
 const router = express.Router();
+const { User, Post, Comment } = require('../../models');
 
 // .render only the pieces that change. main.handlebars lives in layouts and stays there.
 router.get('/', async (req, res) => {
@@ -27,9 +28,15 @@ router.get('/post', (req, res) => {
     } catch(err) {res.status(500).json(err)}
 })
 
-router.get('/dashboard', (req, res) => {
+router.get('/dashboard', async (req, res) => {
     try {
-        res.status(200).render('dashboard')
+        const existingPosts = await Post.findAll({
+            include: [{ model: User }, { model: Comment }]
+        })
+        // console.log(existingPosts)
+        const posts = existingPosts.map((post) => post.get({plain:true}))
+        // console.log(posts)
+        res.status(200).render('dashboard', {posts})
     } catch(err) {res.status(500).json(err)}
 })
 

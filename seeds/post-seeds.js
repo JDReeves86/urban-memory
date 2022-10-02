@@ -6,7 +6,7 @@ const postData = [
        user_id: 2
     },
     {
-        post: 'I am tired of wansering the desert, the apocalypse kind of sucks. Lots of weirdos and war lords.',
+        post: 'I am tired of wandering the desert, the apocalypse kind of sucks. Lots of weirdos and war lords.',
         user_id: 1
     },
     {
