@@ -5,15 +5,18 @@ console.log(User)
 const userData = [
     {
         user_name: 'Mad-Max',
-        password: 'CptWalker'
+        password: 'CptWalker',
+        email: 'Mad@max.com'
     },
     {
         user_name: 'Master-Blaster',
-        password: 'Thunderdome'
+        password: 'Thunderdome',
+        email: 'ThunderdomeChamp123@fake.com'
     },
     {
         user_name: 'Nux',
-        password: 'Valhalla'
+        password: 'Valhalla',
+        email: 'WitnessMe156148@Warboys.com'
     },
 ];
 

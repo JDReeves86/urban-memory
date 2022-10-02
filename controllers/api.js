@@ -1,7 +1,10 @@
 // const { application } = require('express');
-const express = require('express');
 // const { Model } = require('sequelize');
-const {User, Post, Comment } = require('../models');
+// ABOVE LINES BREAK THE ASSOCIATIONS. UNCLEAR WHY
+
+const express = require('express');
+const { User, Post, Comment } = require('../models');
+const bcrypt = require('bcrypt');
 const router = express.Router();
 
 router.get('/users', async (req, res) => {
@@ -43,5 +46,35 @@ router.get('/comments', async (req, res) => {
     } catch(err) {res.status(500).json(err)}
 });
 
+// Creates new user
+router.post('/users', async (req, res) => {
+    try{
+        req.body.password = await bcrypt.hash(req.body.password, 10);
+        const userData = await User.create({
+            user_name: req.body.userName,
+            email: req.body.email,
+            password: req.body.password
+        })
+        res.status(200).json(userData);
+    } 
+    catch(err) {req.status(500).json(err)}
+})
+
+//Deletes user based on id
+router.delete('/users/:id', async (req, res) => {
+    try {
+        const removedUser = await User.destroy({
+            where: {
+                id: req.params.id
+            }
+        })
+        if (!removedUser) {
+            res.status(200).json({message: "No user found!"})
+            return;
+        }
+        res.status(200).json(removedUser);
+    } 
+    catch(err) {res.status(500).json(err)};
+})
 
 module.exports = router
