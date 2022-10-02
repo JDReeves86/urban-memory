@@ -20,32 +20,6 @@ router.get('/users', async (req, res) => {
     } catch(err) {res.status(500).json(err)}
 });
 
-router.get('/posts', async (req, res) => {
-    try{
-        const postData = await Post.findAll({
-            include: [{ model: User }, { model: Comment }]
-        })
-        if (!postData) {
-            res.status(200).json({message: "no user data found!"})
-            return
-        }
-        res.status(200).json(postData)
-    } catch(err) {res.status(500).json(err)}
-});
-
-router.get('/comments', async (req, res) => {
-    try{
-        const commentData = await Comment.findAll({
-            include: [{ model: Post }, { model: Comment}]
-        })
-        if (!commentData) {
-            res.status(200).json({message: "no user data found!"})
-            return
-        }
-        res.status(200).json(commentData)
-    } catch(err) {res.status(500).json(err)}
-});
-
 // Creates new user
 router.post('/users', async (req, res) => {
     try{
@@ -76,5 +50,43 @@ router.delete('/users/:id', async (req, res) => {
     } 
     catch(err) {res.status(500).json(err)};
 })
+
+router.get('/posts', async (req, res) => {
+    try{
+        const postData = await Post.findAll({
+            include: [{ model: User }, { model: Comment }]
+        })
+        if (!postData) {
+            res.status(200).json({message: "no user data found!"})
+            return
+        }
+        res.status(200).json(postData)
+    } catch(err) {res.status(500).json(err)}
+});
+
+router.post('/posts', async (req, res) => {
+    try {
+        const newPost = await Post.create({
+            post: req.body.post,
+            user_id: req.body.user
+        })
+        res.status(200).json(newPost)
+    } catch(err) {res.status(500).json(err)}
+})
+
+router.get('/comments', async (req, res) => {
+    try{
+        const commentData = await Comment.findAll({
+            include: [{ model: Post }, { model: User}]
+        })
+        if (!commentData) {
+            res.status(200).json({message: "no user data found!"})
+            return
+        }
+        res.status(200).json(commentData)
+    } catch(err) {res.status(500).json(err)}
+});
+
+
 
 module.exports = router
