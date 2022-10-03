@@ -12,7 +12,7 @@ const commentData = [
         post_id: 3
     },
     {
-        comment: 'Come back to GasTown! We should have a beer.',
+        comment: 'Come back to Bartertown! We should have a beer.',
         user_id: 2,
         post_id: 2
      },

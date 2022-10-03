@@ -2,7 +2,7 @@ const Post = require('../models/Post');
 
 const postData = [
     {
-       post: 'I blasted that guy in the thunderdome today. He went boom then I went to the methane farm because Auntie Entitty is mean.',
+       post: 'I blasted that guy in the thunderdome today. He went "splooorcht!" then I went to the methane farm because Auntie Entity is mean.',
        user_id: 2
     },
     {

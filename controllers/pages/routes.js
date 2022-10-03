@@ -35,7 +35,8 @@ router.get('/dashboard', async (req, res) => {
         })
         // console.log(existingPosts)
         const posts = existingPosts.map((post) => post.get({plain:true}))
-        // console.log(posts)
+        const comments = existingPosts.map((post) => post.getDataValue('comments'))
+        console.log(posts)
         res.status(200).render('dashboard', {posts})
     } catch(err) {res.status(500).json(err)}
 })
