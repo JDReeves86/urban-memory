@@ -24,20 +24,23 @@ router.get('/signin', (req, res) => {
 
 router.get('/post', (req, res) => {
     try {
-        res.status(200).render('blogpost')
+        res.status(200).render('blog')
     } catch(err) {res.status(500).json(err)}
 })
 
 router.get('/dashboard', async (req, res) => {
     try {
         const existingPosts = await Post.findAll({
-            include: [{ model: User }, { model: Comment }]
+            include: [{ model: User,
+                attributes: ['user_name'] 
+            },
+            { model: Comment }]
         })
         // console.log(existingPosts)
         const posts = existingPosts.map((post) => post.get({plain:true}))
-        const comments = existingPosts.map((post) => post.getDataValue('comments'))
+        const comments = posts.map((post) => post.comments)
         console.log(posts)
-        res.status(200).render('dashboard', {posts})
+        res.status(200).render('dashboard', {posts}) 
     } catch(err) {res.status(500).json(err)}
 })
 
