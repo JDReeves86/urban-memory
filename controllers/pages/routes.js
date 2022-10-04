@@ -16,7 +16,7 @@ router.get('/signup', (req, res) => {
     } catch(err) {res.status(500).json(err)}
 })
 
-router.get('/signin', (req, res) => {
+router.get('/login', (req, res) => {
     try {
         res.status(200).render('signin')
     } catch(err) {res.status(500).json(err)}
@@ -34,13 +34,23 @@ router.get('/dashboard', async (req, res) => {
             include: [{ model: User,
                 attributes: ['user_name'] 
             },
-            { model: Comment }]
+            { model: Comment,
+            include: { model: User,
+                attributes: ['user_name'],
+                where: Comment.user_id = User.id,
+            } 
+        }
+        ]
         })
         // console.log(existingPosts)
         const posts = existingPosts.map((post) => post.get({plain:true}))
         const comments = posts.map((post) => post.comments)
-        console.log(posts)
-        res.status(200).render('dashboard', {posts}) 
+        const users = comments.map((user) => user)
+        res.status(200).render('dashboard', {
+            posts,
+            // comments,
+            // users,
+        }) 
     } catch(err) {res.status(500).json(err)}
 })
 

@@ -1,5 +1,7 @@
 const express = require('express');
 const expressHandlebars = require('express-handlebars');
+const session = require('express-session');
+require('dotenv').config();
 const handlebars = expressHandlebars.create({});
 const app = express();
 
@@ -13,9 +15,17 @@ const PORT = process.env.PORT || 3001;
 app.engine('handlebars', handlebars.engine);
 app.set('view engine', 'handlebars');
 
+const sess = {
+    secret: process.env.SESSION_SECRET,
+    resave: false,
+    saveUninitialized: false,
+};
+
+app.use(session(sess))
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use(express.static(path.join(__dirname, 'public')));
+app.use('/public', express.static(path.join(__dirname, 'public')));
 
 //router middleware for routes in contoller folder
 app.use(routes)

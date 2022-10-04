@@ -6,8 +6,8 @@ const pagesRoute = require('./pages');
 router.use('/api', apiRoutes);
 router.use('/pages', pagesRoute);
 
-router.use((req, res) => {
-    res.send("<h1>Wrong Route!</h1>")
-  });
+// router.use((req, res) => {
+//     res.send("<h1>Wrong Route!</h1>")
+//   });
 
 module.exports = router

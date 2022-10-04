@@ -1,5 +1,4 @@
 <div class="container p-6">
-    <!-- Start blog post content here! -->
     <article class="media">
         <figure class="media-left">
             <p class="image is-48x48">
@@ -9,19 +8,15 @@
         <div class="media-content">
             <div class="content">
                 <p>
-                    <strong>{{user.user_name}}</strong>
+                    {{#each user as |user|}}
+                    <strong>{{user}}</strong>
+                    {{/each}}
                     <br>
-                    {{post}}
+                    {{comment}}
                     <br>
                     <small><a>Comment</a></small>
                 </p>
             </div>
-         <!-- Start comment insert loaded comments into here-->  
-        {{#each comments as |comment|}}
-        {{> comment-block}}
-        {{log comment}}
-        {{/each}}
-        <!-- End comment -->
         </div>
     </article>
 </div>
