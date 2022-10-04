@@ -1,11 +1,24 @@
 //selectors for signup page
-const signUpBtn = document.getElementById('signupBtn');
+const makeAccountBtn = document.getElementById('makeAccount');
 const userEmail = document.getElementById('email');
 const passwordField = document.getElementById('password');
 const userName = document.getElementById('userName');
 
-signUpBtn.addEventListener('click', (ev) => {
-    ev.preventDefault()
-    console.log(userName.value, passwordField.value, userEmail.value)
+const makeAccountHandler = async () => {
+    // console.log(userName.value, passwordField.value, userEmail.value)
+    let newUser = {
+        userName: userName.value,
+        email: userEmail.value,
+        password: passwordField.value,
+    }
+    console.log(newUser)
+    const response = await fetch('/api/users', {
+        method: 'POST',
+        body: JSON.stringify(newUser),
+        headers: { 'Content-Type': 'application/json' }
+    });
+    try{
 
-});
+    } catch(err) {response.status(500).json(err)}
+};
+

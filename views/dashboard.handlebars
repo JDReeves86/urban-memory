@@ -1,4 +1,14 @@
+<div class="container p-6">
+    <div class="level">
+        <div class="level-right">
+            <button class="level-item button is-primary is-light" id="postBtn">Make a post</button>
+        </div>
+    </div>
 {{#each posts as |post|}}
 {{> blog-post}}
 {{!-- {{log post}} --}}
 {{/each}}
+</div>
+
+<script src="../public/dashboard.js"></script>
+

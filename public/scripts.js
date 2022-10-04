@@ -1,29 +1,37 @@
-// const User = require('../models/User');
-// const Post = require('../models/Post');
-// const Comment = require('../models/Comment');
-
 const clickChecker = (ev) => {
     ev.preventDefault()
     switch (ev.target.id) {
         case 'homeBtn':
-            homeHandler()
+            homeHandler();
             break;
         case 'dashboardBtn':
-            dashboardHandler()
+            dashboardHandler();
             break;
         case 'loginBtn':
-            loginHandler()
+            loginHandler();
             break;
         case 'logoutBtn':
+            logoutHandler();
             break;
-        case 'signupBtn':
-            signupHandler()
+        case 'signUpBtn':
+            signupHandler();
+            break;
+        case 'postBtn':
+            postBtnHandler();
+            break;
+        case 'signinBtn':
+            signinBtnHandler();
+            break;
+        case 'blogPostBtn':
+            blogPostBtnHandler();
+            break;
+        case 'makeAccount':
+            makeAccountHandler();
             break;
     };
 };
 
-document.body.addEventListener('click', clickChecker)
-
+document.body.addEventListener('click', clickChecker);
 
 const dashboardHandler = async (ev) => {
     // ev.preventDefault();
@@ -78,3 +86,15 @@ const signupHandler = async () => {
     catch (err) {response.status(500).json(err)}
 };
 
+const logoutHandler = async () => {
+    const response = await fetch('/pages/logout', {
+        method: 'GET'
+    });
+    try {    
+        if (response.ok) {
+            document.location.replace('/pages/logout')
+        }
+        else console.log('ERRRORRRRRRR')
+    }
+    catch (err) {response.status(500).json(err)}
+}

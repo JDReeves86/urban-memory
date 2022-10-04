@@ -18,7 +18,13 @@ router.get('/signup', (req, res) => {
 
 router.get('/login', (req, res) => {
     try {
-        res.status(200).render('signin')
+        res.status(200).render('login')
+    } catch(err) {res.status(500).json(err)}
+})
+
+router.get('/logout', (req, res) => {
+    try {
+        res.status(200).render('logout')
     } catch(err) {res.status(500).json(err)}
 })
 
