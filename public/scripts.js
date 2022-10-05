@@ -1,3 +1,6 @@
+const modal = document.getElementById('modal');
+const commentInput = document.getElementById('commentInput');
+
 const clickChecker = (ev) => {
     ev.preventDefault()
     switch (ev.target.id) {
@@ -29,7 +32,15 @@ const clickChecker = (ev) => {
             makeAccountHandler(ev);
             break;
         case 'commentLink':
-            commentHandler(ev);
+            const clicked = ev.target.getAttribute('data-user')
+            openModal(clicked);
+            break;
+        case 'saveCommentBtn':
+            saveComment();
+            break;
+        case 'closeModal':
+        case 'cancelBtn':
+            closeModal()
             break;
     };
 };

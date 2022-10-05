@@ -11,11 +11,11 @@ const postBtnHandler = async () => {
     catch (err) {response.status(500).json(err)}
 };
 
-const commentHandler = async (ev) => {
-    const clickedPost = ev.target.getAttribute('data-user')
+const commentHandler = async (clickedPost, comment) => {
+    console.log(clickedPost, comment)
+    // const clickedPost = ev.target.getAttribute('data-user')
 
     // <<<<<====== NEED A MORE ELEGENT WAY TO CAPTURE THIS ===========>>>>>>>>>
-    const comment = prompt('What you got to say?', 'Nevermind').trim()
 
     const commentData = {
         comment,
@@ -32,3 +32,18 @@ const commentHandler = async (ev) => {
     } else console.log('ur comment was bad and your should feel bad')
     console.log(commentData)
 };
+
+const closeModal = (ev) => {
+    modal.setAttribute('class', 'modal');
+}
+
+const openModal = (clicked) => {
+    modal.setAttribute('class', 'modal is-active')
+    modal.setAttribute('data-post', clicked)
+}
+
+const saveComment = () => {
+    const comment = commentInput.value.trim()
+    const clicked = modal.getAttribute('data-post')
+    commentHandler(clicked, comment)
+}
