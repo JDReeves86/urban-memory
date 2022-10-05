@@ -72,25 +72,25 @@
     > The home button will direct the user to the home/landing page.
 
 3. WHEN I click on any other links in the navigation THEN I am prompted to either sign up or sign in.
-    > To navigate to the dashboard the user is prompted to sign in. If they are signed in, they will be directed to the dashboard. 
+    > To navigate to the dashboard the user is prompted to sign in. If they are signed in, they will be directed to the dashboard. Otherwise they will be directed to the sign in page.
 
 4. WHEN I choose to sign up THEN I am prompted to create a username and password.
-    >
+    > When the user clickes the sign-up button on the home page, they are prompted to enter a username, their email address and choose a password. 
 
 5. WHEN I click on the sign-up button THEN my user credentials are saved and I am logged into the site.
-    >
+    > Upon signing up, the user is logged into the site and their credentials are saved to the local db.
 
 6. WHEN I revisit the site at a later time and choose to sign in THEN I am prompted to enter my username and password.
-    >
+    > When the user clicks the sign in page, they are prompted to enter their chosen username and password to log in and make posts.
 
 7. WHEN I am signed in to the site THEN I see navigation links for the homepage, the dashboard, and the option to log out.
-    >
+    > Option buttons remain visible however any attempt to navigate to the dashboard without logging in prior, the user will be directed to the sign in page first. 
 
 8. WHEN I click on the homepage option in the navigation THEN I am taken to the homepage and presented with existing blog posts that include the post title and the date created
-    >
+    > The home page button will direct users to the landing page where they are prompted to either sign in or sign up to create posts. They will see existing posts and comments from this page.
 
 9. WHEN I click on an existing blog post THEN I am presented with the post title, contents, post creator’s username, and date created for that post and have the option to leave a comment.
-    >
+    > 
 
 10. WHEN I enter a comment and click on the submit button while signed in THEN the comment is saved and the post is updated to display the comment, the comment creator’s username, and the date created.
     >
