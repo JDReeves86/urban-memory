@@ -28,6 +28,9 @@ const clickChecker = (ev) => {
         case 'makeAccount':
             makeAccountHandler(ev);
             break;
+        case 'commentLink':
+            commentHandler(ev);
+            break;
     };
 };
 

@@ -16,6 +16,27 @@ router.get('/', async (req, res) => {
     } catch(err) {res.status(500).json(err)}
 });
 
+router.post('/', async (req, res) => {
+    try {
+        const userData = await User.findOne({
+            where: {
+                id: req.session.userID
+            }
+        })
 
+        if (!userData) {
+            res.status(400).json({message: 'How did yoiu get herre without logging in?'})
+            return;
+        }
+
+        const newComment = await Comment.create({
+            comment: req.body.comment,
+            post_id: req.body.post_id,
+            user_id: userData.id,
+        })
+        console.log(newComment)
+        res.status(200).json(newComment)
+    } catch(err) {res.status(500).json(err)}
+});
 
 module.exports = router
