@@ -16,6 +16,9 @@ const clickChecker = (ev) => {
         case 'signUpBtn':
             signupHandler(ev);
             break;
+        case 'signinBtn':
+            signinBtnHandler(ev);
+            break;
         case 'postBtn':
             postBtnHandler(ev);
             break;
@@ -88,18 +91,16 @@ const signupHandler = async (ev) => {
 
 const logoutHandler = async (ev) => {
     ev.preventDefault();
-    const response = await fetch('/logout', {
-        method: 'GET'
-    });
-    await fetch('/logout', {
-        method: 'POST'
+    const response = await fetch('api/users/logout', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
     });
     try {    
         if (response.ok) {
+            console.log('response fine')
             document.location.replace('/logout')
-            console.log(req.session.loggedIn)
         }
-        else console.log('ERRRORRRRRRR')
+        else console.log('ERRROR buddy')
     }
     catch (err) {response.status(500).json(err)}
 }

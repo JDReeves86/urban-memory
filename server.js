@@ -12,14 +12,13 @@ const PORT = process.env.PORT || 3001;
 const routes = require('./controllers');
 const sequelize = require('./config/connection')
 
-const handlebars = expressHandlebars.create({});
 
-app.engine('handlebars', handlebars.engine);
-app.set('view engine', 'handlebars');
 
 const sess = {
     secret: process.env.SESSION_SECRET,
-    cookie: {},
+    cookie: {
+        maxAge: 5 * 60 * 1000
+    },
     resave: false,
     saveUninitialized: false,
     store: new SequelizeStore({
@@ -29,6 +28,11 @@ const sess = {
 
 app.use(session(sess))
 
+const handlebars = expressHandlebars.create({});
+
+app.engine('handlebars', handlebars.engine);
+app.set('view engine', 'handlebars');
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use('/public', express.static(path.join(__dirname, 'public')));
@@ -36,6 +40,8 @@ app.use('/public', express.static(path.join(__dirname, 'public')));
 //router middleware for routes in contoller folder
 app.use(routes)
 
-app.listen(PORT, () => {
+sequelize.sync({force: false}).then(() => {
+    app.listen(PORT, () => 
     console.log(`Listening at ${PORT}`)
+    )
 })

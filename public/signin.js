@@ -1,8 +1,7 @@
 // selectors for login page
 const userName = document.getElementById('userName');
-const signInBtn = document.getElementById('signinBtn');
+// const signInBtn = document.getElementById('signinBtn');
 const passwordField = document.getElementById('password');
-
 
 
 const signinBtnHandler = async (ev) => {
@@ -10,7 +9,7 @@ const signinBtnHandler = async (ev) => {
     const user = userName.value.trim();
     const password = passwordField.value.trim();
 
-    console.log({ user, password })
+    // console.log({ user, password })
     if (user && password) {
         const response = await fetch('api/users/login', {
             method: "POST",
@@ -22,5 +21,3 @@ const signinBtnHandler = async (ev) => {
         } else {alert('log in failed')};
     };
 }
-
-signInBtn.addEventListener('click', signinBtnHandler)

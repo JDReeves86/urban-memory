@@ -23,7 +23,7 @@ router.get('/login', (req, res) => {
     } catch(err) {res.status(500).json(err)}
 })
 
-router.get('/logout', auth, (req, res) => {
+router.get('/logout', (req, res) => {
     try {
         res.status(200).render('logout')
     } catch(err) {res.status(500).json(err)}

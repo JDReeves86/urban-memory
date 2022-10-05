@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const { User, Post, Comment } = require('../../models');
+const auth = require('../../utils/auth')
 
 
 router.get('/', async (req, res) => {
@@ -38,10 +39,11 @@ router.post('/login', async (req, res) => {
         });
 
         if (!userData) {
-            res.status(400).json({message: 'Incorrect email or password.'})
+            res.status(400).json({message: 'Incorrect email or password.'});
+            return;
         }
 
-        // console.log(userData)
+        // console.log(userData.id)
  
         const validPassword = await userData.checkPassword(req.body.password);
 
@@ -52,25 +54,26 @@ router.post('/login', async (req, res) => {
 
         req.session.save(() => {
             req.session.loggedIn = true;
-            console.log('logging in' + req.session.cookie);
-            res.status(200).json({user: userData, message:"it worked?"})
+            req.session.userID = userData.id
+            console.log(req.session);
+            res.status(200).json(userData)
         })
-        // console.log(req.session.userId)
     } catch(err) {
         console.log(err);
         res.status(500).json(err)
     }
 })
 
-router.post('/logout', (req, res) => {
+router.post('/logout', auth, async (req, res) => {
+    // console.log("logout hit")
     if (req.session.loggedIn) {
-      req.session.destroy(() => {
+        req.session.destroy(() => {
         res.status(204).end();
       });
     } else {
       res.status(404).end();
     }
-  });
+});
 
 //Deletes user based on id
 router.delete('/:id', async (req, res) => {
