@@ -19,9 +19,6 @@ const clickChecker = (ev) => {
         case 'postBtn':
             postBtnHandler(ev);
             break;
-        case 'signinBtn':
-            signinBtnHandler();
-            break;
         case 'blogPostBtn':
             blogPostBtnHandler(ev);
             break;
