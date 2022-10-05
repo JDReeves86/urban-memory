@@ -1,10 +1,10 @@
 const postBtnHandler = async () => {
-    const response = await fetch('/pages/post', {
+    const response = await fetch('/post', {
         method: 'GET'
     });
     try {    
         if (response.ok) {
-            document.location.replace('/pages/post')
+            document.location.replace('/post')
         }
         else console.log('ERRRORRRRRRR')
     }

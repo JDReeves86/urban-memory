@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const { User, Post, Comment } = require('../../models');
 const bcrypt = require('bcrypt');
+const auth = require('../../utils/auth')
 
 
 router.get('/', async (req, res) => {
@@ -28,8 +29,38 @@ router.post('/', async (req, res) => {
         })
         res.status(200).json(userData);
     } 
-    catch(err) {req.status(500).json(err)}
+    catch(err) {res.status(500).json(err)}
 })
+
+router.post('/login', async (req, res) => {
+    try {
+        const userData = await User.findOne({
+            where: {
+                user_name: req.body.userName,
+            },
+            exclude: ['password']
+        })
+        console.log(userData)
+        if (!userData) {
+            res.status(400).json({message: 'Incorrect email or password.'})
+        }
+        req.session.save(() => {
+            req.session.loggedIn = true
+            req.session.userName = userData.user_name,
+            req.session.id = userData.id
+        })
+    } catch(err) {res.status(500).json(err)}
+})
+
+router.post('/logout', (req, res) => {
+    if (req.session.loggedIn) {
+      req.session.destroy(() => {
+        res.status(204).end();
+      });
+    } else {
+      res.status(404).end();
+    }
+  });
 
 //Deletes user based on id
 router.delete('/:id', async (req, res) => {
@@ -47,6 +78,5 @@ router.delete('/:id', async (req, res) => {
     } 
     catch(err) {res.status(500).json(err)};
 })
-
 
 module.exports = router

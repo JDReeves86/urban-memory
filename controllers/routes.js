@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
-const { User, Post, Comment } = require('../../models');
+const { User, Post, Comment } = require('../models');
+const auth = require('../utils/auth')
 
 // .render only the pieces that change. main.handlebars lives in layouts and stays there.
 router.get('/', async (req, res) => {
@@ -22,7 +23,7 @@ router.get('/login', (req, res) => {
     } catch(err) {res.status(500).json(err)}
 })
 
-router.get('/logout', (req, res) => {
+router.get('/logout', auth, (req, res) => {
     try {
         res.status(200).render('logout')
     } catch(err) {res.status(500).json(err)}
@@ -34,7 +35,7 @@ router.get('/post', (req, res) => {
     } catch(err) {res.status(500).json(err)}
 })
 
-router.get('/dashboard', async (req, res) => {
+router.get('/dashboard', auth, async (req, res) => {
     try {
         const existingPosts = await Post.findAll({
             include: [{ model: User,
