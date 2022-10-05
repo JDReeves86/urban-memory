@@ -12,10 +12,6 @@ const postBtnHandler = async () => {
 };
 
 const commentHandler = async (clickedPost, comment) => {
-    console.log(clickedPost, comment)
-    // const clickedPost = ev.target.getAttribute('data-user')
-
-    // <<<<<====== NEED A MORE ELEGENT WAY TO CAPTURE THIS ===========>>>>>>>>>
 
     const commentData = {
         comment,
