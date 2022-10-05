@@ -6,9 +6,25 @@ const auth = require('../utils/auth')
 // .render only the pieces that change. main.handlebars lives in layouts and stays there.
 router.get('/', async (req, res) => {
     try {
-        res.status(200).render('landing')
-    } 
-    catch(err) {res.status(500).json(err)}
+        const existingPosts = await Post.findAll({
+            include: [{ model: User,
+                attributes: ['user_name'] 
+            },
+            { model: Comment,
+            include: { model: User,
+                attributes: ['user_name'],
+                where: Comment.user_id = User.id,
+            } 
+        }
+        ]
+        })
+        const posts = existingPosts.map((post) => post.get({plain:true}))
+        const comments = posts.map((post) => post.comments)
+        const users = comments.map((user) => user)
+        res.status(200).render('landing', {
+            posts,
+        }) 
+    } catch(err) {res.status(500).json(err)}
 })
 
 router.get('/signup', (req, res) => {
@@ -38,6 +54,9 @@ router.get('/post', (req, res) => {
 router.get('/dashboard', auth, async (req, res) => {
     try {
         const existingPosts = await Post.findAll({
+            where: {
+                user_id: req.session.userID
+            },
             include: [{ model: User,
                 attributes: ['user_name'] 
             },

@@ -3,3 +3,9 @@
     <h4 class="is-size-4 mb-5">Sign in or make an account to post some shit.</h4>
     <button class="button is-primary" id="signUpBtn">Sign up</button>
 </div>
+<div class="container">
+    {{#each posts as |post|}}
+    {{> blog-post}}
+    {{!-- {{log post}} --}}
+    {{/each}}  
+</div>

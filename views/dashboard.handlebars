@@ -4,10 +4,15 @@
             <button class="level-item button is-primary is-light" id="postBtn">Make a post</button>
         </div>
     </div>
-{{#each posts as |post|}}
-{{> blog-post}}
-{{log post}}
-{{/each}}
+
+    {{#unless posts}}
+    <h3 class="is-size-4">You haven't posted anything yet, get to it!</h3>
+    {{/unless}}
+
+    {{#each posts as |post|}}
+    {{> blog-post}}
+    {{!-- {{log post}} --}}
+    {{/each}}
 </div>
 
 <script src="../public/dashboard.js"></script>
