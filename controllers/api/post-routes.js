@@ -39,4 +39,33 @@ router.post('/', async (req, res) => {
     } catch(err) {res.status(500).json(err)}
 });
 
+router.put('/', async (req, res) => {
+    try {
+        const postData = await Post.update({
+            post: req.body.postUpdate
+        },
+        {
+            where: {
+                id: req.body.postID
+            }
+        });
+        if(!postData) {
+            res.status(400).json({message: "I'm honestly just as confused as you are."})
+        };
+    } catch(err) {res.status(500).json(err)}
+});
+
+router.delete('/', async (req, res) => {
+    try {
+        const removedPost = await Post.destroy({
+            where: {
+                id: req.body.postID
+            }
+        })
+        if (!removedPost) {
+            res.status(400).json({message: "It's already gone!"})
+        }
+    } catch(err) {res.status(500).json({ message: "failed to delete it my dude."})}
+})
+
 module.exports = router
