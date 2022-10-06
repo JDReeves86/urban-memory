@@ -1,13 +1,13 @@
 const express = require('express');
 const router = express.Router();
-const { user, post, comment } = require('../../models');
+const { User, Post, Comment } = require('../../models');
 const auth = require('../../utils/auth')
 
 
 router.get('/', async (req, res) => {
     try{
-        const userData = await user.findAll({
-            include: [{ model: post }, { model: comment }]
+        const userData = await User.findAll({
+            include: [{ model: Post }, { model: Comment }]
         })
         if (!userData) {
             res.status(200).json({message: "no user data found!"})
@@ -20,7 +20,7 @@ router.get('/', async (req, res) => {
 // Creates new user
 router.post('/', async (req, res) => {
     try{
-        const userData = await user.create({
+        const userData = await User.create({
             user_name: req.body.userName,
             email: req.body.email,
             password: req.body.password
@@ -39,7 +39,7 @@ router.post('/', async (req, res) => {
 //then saves user information to session storage for making posts and comments.
 router.post('/login', async (req, res) => {
     try {
-        const userData = await user.findOne({
+        const userData = await User.findOne({
             where: {
                 user_name: req.body.user,
             },
@@ -87,7 +87,7 @@ router.post('/logout', auth, async (req, res) => {
 //Deletes user based on id - largely unused
 router.delete('/:id', async (req, res) => {
     try {
-        const removedUser = await user.destroy({
+        const removedUser = await User.destroy({
             where: {
                 id: req.params.id
             }

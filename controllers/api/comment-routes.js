@@ -1,12 +1,12 @@
 const express = require('express');
 const router = express.Router();
-const { user, post, comment } = require('../../models');
+const { User, Post, Comment } = require('../../models');
 
 // used for retriving comments to display, not really used on front end, mostly for interrogation and testing on backend.
 router.get('/', async (req, res) => {
     try{
-        const commentData = await comment.findAll({
-            include: [{ model: post }, { model: user}]
+        const commentData = await Comment.findAll({
+            include: [{ model: Post }, { model: User}]
         })
         if (!commentData) {
             res.status(200).json({message: "no user data found!"})
@@ -19,7 +19,7 @@ router.get('/', async (req, res) => {
 // allows users to post comments. No PUT or DELETE routes at this time - optional future expansion.
 router.post('/', async (req, res) => {
     try {
-        const userData = await user.findOne({
+        const userData = await User.findOne({
             where: {
                 id: req.session.userID
             }
@@ -30,7 +30,7 @@ router.post('/', async (req, res) => {
             return;
         }
 
-        const newComment = await comment.create({
+        const newComment = await Comment.create({
             comment: req.body.comment,
             post_id: req.body.post_id,
             user_id: userData.id,
