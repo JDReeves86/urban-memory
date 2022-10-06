@@ -8,6 +8,7 @@
     </div>
     <div class="block">
         <p class="is-size-6 has-text-primary">{{post.dataValues.createdAt}}</p>
+        <small><a id="commentLink" data-post="{{post.dataValues.id}}">Comment</a></small>
     </div>
 </div>
 {{#each post.dataValues.comments as |comment|}}
@@ -31,3 +32,4 @@
     </article>
 </div>    
 {{/each}}
+<script src="../../public/blogView.js"></script>

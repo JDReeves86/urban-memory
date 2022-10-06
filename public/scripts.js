@@ -33,7 +33,7 @@ const clickChecker = (ev) => {
             makeAccountHandler(ev);
             break;
         case 'commentLink':
-            const clicked = ev.target.getAttribute('data-user')
+            const clicked = ev.target.getAttribute('data-post')
             openModal(clicked);
             break;
         case 'saveCommentBtn':
