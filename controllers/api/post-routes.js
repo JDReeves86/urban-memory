@@ -37,13 +37,15 @@ router.post('/', async (req, res) => {
 });
 
 router.put('/', async (req, res) => {
+    console.log(req.body)
     try {
         const postData = await Post.update({
-            post: req.body.postUpdate
+            post: req.body.post,
+            title: req.body.title
         },
         {
             where: {
-                id: req.body.postID
+                id: req.body.id
             }
         });
         if(!postData) {

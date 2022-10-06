@@ -1,6 +1,10 @@
 const modal = document.getElementById('modal');
+const modalEditPost = document.getElementById('modalEditPost');
+
 const commentInput = document.getElementById('commentInput');
 
+const editPostInput = document.getElementById('editPostInput');
+const editPostTitle = document.getElementById('editPostTitle');
 
 const clickChecker = (ev) => {
     ev.preventDefault()
@@ -48,6 +52,13 @@ const clickChecker = (ev) => {
             break;
         case 'blogPreview':
             blogPreviewHandler(ev);
+            break;
+        case 'editPost':
+            const edited = ev.target.getAttribute('data-post')
+            openBlogModal(edited);
+            break;
+        case 'saveEditBtn':
+            saveEdit();
             break;
     };
 };

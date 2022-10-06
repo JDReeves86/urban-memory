@@ -12,7 +12,7 @@ const postBtnHandler = async () => {
 };
 
 const removePostHandler = async (ev) => {
-    const postID = ev.target.getAttribute('data-user');
+    const postID = ev.target.getAttribute('data-post');
     try {  
         const response = await fetch('api/posts/', {
             method: 'DELETE',
@@ -27,35 +27,36 @@ const removePostHandler = async (ev) => {
     catch (err) {response.status(500).json(err)}
 }
 
-// const commentHandler = async (clickedPost, comment) => {
+const openBlogModal = (clicked) => {
+    modalEditPost.setAttribute('class', 'modal is-active')
+    modalEditPost.setAttribute('data-post', clicked)
+};
 
-//     const commentData = {
-//         comment,
-//         post_id: clickedPost
-//     }
+const closeModal = (ev) => {
+    modalEditPost.setAttribute('class', 'modal');
+}
 
-//     const response = await fetch('api/comments/', {
-//         method: 'POST',
-//         body: JSON.stringify(commentData),
-//         headers: { 'Content-Type': 'application/json' },
-//     })
-//     if (response.ok) {
-//         document.location.replace('/dashboard')
-//     } else console.log('ur comment was bad and your should feel bad')
-//     console.log(commentData)
-// };
+const saveEdit = () => {
+    const post = editPostInput.value.trim();
+    const title = editPostTitle.value.trim();
+    const clicked = modalEditPost.getAttribute('data-post');
+    // console.log(post, title, clicked)
+    editPostHandler(clicked, post, title)
+}
 
-// const closeModal = (ev) => {
-//     modal.setAttribute('class', 'modal');
-// }
+const editPostHandler = async (clicked, post, title) => {
+    const editedPost = {
+        title,
+        post,
+        id: clicked
+    };
 
-// const openModal = (clicked) => {
-//     modal.setAttribute('class', 'modal is-active')
-//     modal.setAttribute('data-post', clicked)
-// }
-
-// const saveComment = () => {
-//     const comment = commentInput.value.trim()
-//     const clicked = modal.getAttribute('data-post')
-//     commentHandler(clicked, comment)
-// }
+    const response = await fetch('api/posts/', {
+        method: 'PUT',
+        body: JSON.stringify(editedPost),
+        headers: { 'Content-Type': 'application/json' },
+    })
+    if (response.ok) {
+        document.location.replace(`/dashboard`)
+    } else {console.log('bad post my dude')}
+}

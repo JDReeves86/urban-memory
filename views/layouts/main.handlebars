@@ -62,6 +62,25 @@
     </div>
 </div>
 
+{{!-- Modal for editing post --}}
+<div class="modal" id="modalEditPost">
+    <div class="modal-background"></div>
+    <div class="modal-card">
+        <header class="modal-card-head has-background-primary-dark">
+            <p class="modal-card-title has-text-white">You change your underwear, why not change your mind?</p>
+            <button class="delete" aria-label="close" id="closeModal"></button>
+        </header>
+        <section class="modal-card-body">
+            <input class="input" type="text" placeholder="Enter a new title while you're at it." id="editPostTitle">
+            <textarea placeholder="thoughts go here.." id="editPostInput" class="2 lines of textarea"></textarea>
+        </section>
+        <footer class="modal-card-foot">
+            <button class="button success has-background-primary-dark has-text-light" id="saveEditBtn">Save changes</button>
+            <button class="button has-background-danger has-text-light" id="cancelBtn">Cancel</button>
+        </footer>
+    </div>
+</div>
+
     <script src="../../public/scripts.js" rel="text/javascript"></script>
 </body>
 </html>
