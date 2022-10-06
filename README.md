@@ -122,43 +122,7 @@
 
 <br>
 
-![myscreenshot](./Assets/Screenshot1.png)
-
-<br>
-
-Landing page
-
-<br>
-
-![myscreenshot](./Assets/Screenshot2.png)
-
-<br>
-
-Viewing a post.
-
-<br>
-
-![myscreenshot](./Assets/Screenshot3.png)
-
-<br>
-
-making a post
-
-<br>
-
-![myscreenshot](./Assets/Screenshot4.png)
-
-<br>
-
-Example dashboard
-
-<br>
-
-![myscreenshot](./Assets/Screenshot5.png)
-
-<br>
-
-Signing out
+N/A
 
 <br>
 
@@ -171,7 +135,7 @@ Signing out
 
 Link to Github repo: https://github.com/JDReeves86/fictional-memory-ECommerce-BackEnd
 
-Link to live application: https://agile-waters-90061.herokuapp.com
+Link to video walkthrough: https://drive.google.com/file/d/1qZEcXgSSNjz4lG3aK4qoPhvBHOXmIgiP/view
 
 <br>
 <br>
