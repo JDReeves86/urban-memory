@@ -23,18 +23,15 @@ router.post('/', async (req, res) => {
                 id: req.session.userID
             }
         })
-
         if (!userData) {
             res.status(400).json({message: 'How did yoiu get herre without logging in?'})
             return;
         }
-
-        console.log(userData)
         const newPost = await Post.create({
-            post: req.body.postData,
+            post: req.body.post,
+            title: req.body.title,
             user_id: userData.id
         })
-        console.log(newPost)
         res.status(200).json(newPost)
     } catch(err) {res.status(500).json(err)}
 });
