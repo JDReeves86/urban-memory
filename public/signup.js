@@ -18,6 +18,9 @@ const makeAccountHandler = async () => {
             body: JSON.stringify(newUser),
             headers: { 'Content-Type': 'application/json' }
         });
+        if (response.ok) {
+            document.location.replace('/dashboard')
+        }
     } catch(err) {response.status(500).json(err)}
 };
 
