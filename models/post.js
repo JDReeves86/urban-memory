@@ -12,6 +12,10 @@ Post.init (
             primaryKey: true,
             autoIncrement: true
         },
+        title: {
+            type: DataTypes.STRING,
+            allowNull: false
+        },
         post: {
             type: DataTypes.STRING,
             allowNull: false,
@@ -27,7 +31,7 @@ Post.init (
     },
     {
         sequelize,
-        timestamps: false,
+        timestamps: true,
         freezeTableName: true,
         underscored: true,
         modelName: 'post',

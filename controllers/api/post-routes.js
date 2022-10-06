@@ -52,19 +52,25 @@ router.put('/', async (req, res) => {
         if(!postData) {
             res.status(400).json({message: "I'm honestly just as confused as you are."})
         };
+        res.status(200).json(postData)
     } catch(err) {res.status(500).json(err)}
 });
 
 router.delete('/', async (req, res) => {
     try {
+        console.log(req.body)
         const removedPost = await Post.destroy({
             where: {
                 id: req.body.postID
-            }
+            },
+            include: [{ model: Comment,
+                as: 'comment'
+            }]
         })
         if (!removedPost) {
             res.status(400).json({message: "It's already gone!"})
         }
+        res.status(200).json(removedPost)
     } catch(err) {res.status(500).json({ message: "failed to delete it my dude."})}
 })
 

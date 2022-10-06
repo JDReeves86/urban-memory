@@ -30,3 +30,8 @@ const saveComment = () => {
     const clicked = modal.getAttribute('data-post')
     commentHandler(clicked, comment)
 }
+
+const blogPreviewHandler = async (ev) => {
+    const clicked = ev.target.getAttribute('data-post');
+    document.location.replace(`/${clicked}`)
+}

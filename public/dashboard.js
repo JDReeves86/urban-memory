@@ -11,16 +11,16 @@ const postBtnHandler = async () => {
     catch (err) {response.status(500).json(err)}
 };
 
-const removePostHandler = async () => {
-    const postID = removePost.getAttribute('data-user');
-    const response = await fetch('api/posts/', {
-        method: 'DELETE',
-        body: JSON.stringify({ postID }),
-        headers: { 'Content-Type': 'application/json' },
-    });
-    try {    
+const removePostHandler = async (ev) => {
+    const postID = ev.target.getAttribute('data-user');
+    try {  
+        const response = await fetch('api/posts/', {
+            method: 'DELETE',
+            body: JSON.stringify({ postID }),
+            headers: { 'Content-Type': 'application/json' },
+        });
         if (response.ok) {
-            document.location.replace('/')
+            document.location.replace('/dashboard')
         }
         else console.log('Failed to remove.')
     }

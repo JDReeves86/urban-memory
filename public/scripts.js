@@ -1,6 +1,6 @@
 const modal = document.getElementById('modal');
 const commentInput = document.getElementById('commentInput');
-const removePost = document.getElementById('removePost')
+
 
 const clickChecker = (ev) => {
     ev.preventDefault()
@@ -44,7 +44,10 @@ const clickChecker = (ev) => {
             closeModal()
             break;
         case 'removePost':
-            removePostHandler();
+            removePostHandler(ev);
+            break;
+        case 'blogPreview':
+            blogPreviewHandler(ev);
             break;
     };
 };

@@ -1,0 +1,35 @@
+<div class="container">
+    <div class="block mt-6">
+        <h1 class="title is-1">{{post.dataValues.title}}</h1>
+        <h2 class="title is-3">by: {{post.dataValues.user.dataValues.user_name}}</h2>
+    </div>
+    <div class="block">
+        <p class="is-size-4">{{post.dataValues.post}}</p>
+    </div>
+    <div class="block">
+        <p class="is-size-6 has-text-primary">{{post.dataValues.createdAt}}</p>
+    </div>
+</div>
+{{#each post.dataValues.comments as |comment|}}
+<div class="container p-6">
+    <article class="media">
+        <figure class="media-left">
+            <p class="image is-48x48">
+              <img src="https://bulma.io/images/placeholders/96x96.png">
+            </p>
+        </figure>
+        <div class="media-content">
+            <div class="content">
+                <p>
+                    {{#if comment.dataValues.user}}
+                    <strong>{{comment.dataValues.user.dataValues.user_name}}</strong>
+                    {{/if}}
+                    <br>
+                    {{comment.dataValues.comment}}
+                    <br>
+                </p>
+            </div>
+        </div>
+    </article>
+</div>    
+{{/each}}

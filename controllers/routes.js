@@ -81,8 +81,24 @@ router.get('/dashboard', auth, async (req, res) => {
 })
 
 router.get('/:num', async (req, res) => {
-    try {
-        res.status(200).json({message: "sweet", hit: req.params.num})
+        try {
+            const post = await Post.findOne({
+                where: {
+                    id: req.params.num
+                },
+                include: [{ model: User,
+                    attributes: ['user_name'],
+                },
+                { model: Comment,
+                include: { model: User,
+                    attributes: ['user_name'],
+                    where: Comment.user_id = User.id,
+                } 
+            }]
+            })
+            res.status(200).render('blog-view', {
+                post,
+            }) 
     }
     catch(err) {res.status(500).json(err)}
 })
