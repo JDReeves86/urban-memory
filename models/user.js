@@ -39,9 +39,10 @@ User.init (
                 userData.password = await bcrypt.hash(userData.password, 10);
                 return userData;
             },
-            // async beforeBulkCreate(newUserData) {
-            //     newUserData.password = await bcrypt.hash(newUserData.password, 10);
-            //     return newUserData;
+            // Throws error requesting data and salt values. Not sure why it gets mad at me. Will need to investigate further if time permits.
+            // async beforeBulkCreate(UserData) {
+            //     UserData.password = await bcrypt.hash(UserData.password, 10);
+            //     return UserData;
             // },
         },
         sequelize,

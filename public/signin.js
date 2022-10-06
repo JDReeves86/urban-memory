@@ -1,9 +1,8 @@
-// selectors for login page
+//selectors for signin page - Need to keep off scripts.js as selector element ids are same as ones used on sign-up page.
 const userName = document.getElementById('userName');
-// const signInBtn = document.getElementById('signinBtn');
 const passwordField = document.getElementById('password');
 
-
+//logic for login button
 const signinBtnHandler = async (ev) => {
     ev.preventDefault();
     const user = userName.value.trim();
@@ -20,4 +19,4 @@ const signinBtnHandler = async (ev) => {
             document.location.replace('/dashboard')
         } else {alert('log in failed')};
     };
-}
+};

@@ -1,3 +1,5 @@
+// logic for the dashboard partial
+
 const postBtnHandler = async () => {
     const response = await fetch('/post', {
         method: 'GET'
@@ -25,7 +27,7 @@ const removePostHandler = async (ev) => {
         else console.log('Failed to remove.')
     }
     catch (err) {response.status(500).json(err)}
-}
+};
 
 const openBlogModal = (clicked) => {
     modalEditPost.setAttribute('class', 'modal is-active')
@@ -34,7 +36,7 @@ const openBlogModal = (clicked) => {
 
 const closeModal = (ev) => {
     modalEditPost.setAttribute('class', 'modal');
-}
+};
 
 const saveEdit = () => {
     const post = editPostInput.value.trim();
@@ -42,7 +44,7 @@ const saveEdit = () => {
     const clicked = modalEditPost.getAttribute('data-post');
     // console.log(post, title, clicked)
     editPostHandler(clicked, post, title)
-}
+};
 
 const editPostHandler = async (clicked, post, title) => {
     const editedPost = {
@@ -59,4 +61,4 @@ const editPostHandler = async (clicked, post, title) => {
     if (response.ok) {
         document.location.replace(`/dashboard`)
     } else {console.log('bad post my dude')}
-}
+};

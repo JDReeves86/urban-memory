@@ -1,7 +1,5 @@
 
-const blogText = document.getElementById('blogPost');
-const blogPostBtn = document.getElementById('blogPostBtn');
-
+// logic for posting a new blog post.
 const blogPostBtnHandler = async () => {
     const postData = {
         post: blogPost.value,

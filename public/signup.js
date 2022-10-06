@@ -1,18 +1,17 @@
-//selectors for signup page
+//selectors for signup page - Need to keep off scripts.js as selector element ids are same as ones used on sign-in page.
 const makeAccountBtn = document.getElementById('makeAccount');
 const userEmail = document.getElementById('email');
 const passwordField = document.getElementById('password');
 const userName = document.getElementById('userName');
 
+//logic for making account
 const makeAccountHandler = async () => {
-    // console.log(userName.value, passwordField.value, userEmail.value)
     try{
         let newUser = {
             userName: userName.value,
             email: userEmail.value,
             password: passwordField.value,
         }
-        console.log(newUser)
         const response = await fetch('/api/users', {
             method: 'POST',
             body: JSON.stringify(newUser),

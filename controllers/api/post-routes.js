@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const { User, Post, Comment } = require('../../models');
 
-
+// Post routes. allows for GET for all posts.
 router.get('/', async (req, res) => {
     try{
         const postData = await Post.findAll({
@@ -16,6 +16,7 @@ router.get('/', async (req, res) => {
     } catch(err) {res.status(500).json(err)}
 });
 
+// POST for making new posts
 router.post('/', async (req, res) => {
     try {
         const userData = await User.findOne({
@@ -36,6 +37,7 @@ router.post('/', async (req, res) => {
     } catch(err) {res.status(500).json(err)}
 });
 
+// PUT route for updating posts
 router.put('/', async (req, res) => {
     console.log(req.body)
     try {
@@ -55,6 +57,7 @@ router.put('/', async (req, res) => {
     } catch(err) {res.status(500).json(err)}
 });
 
+// delete route for removing posts.
 router.delete('/', async (req, res) => {
     try {
         console.log(req.body)

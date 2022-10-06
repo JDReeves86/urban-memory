@@ -35,6 +35,8 @@ router.post('/', async (req, res) => {
     catch(err) {res.status(500).json(err)}
 })
 
+// login route, finds user model based on username and password 
+//then saves user information to session storage for making posts and comments.
 router.post('/login', async (req, res) => {
     try {
         const userData = await User.findOne({
@@ -69,6 +71,8 @@ router.post('/login', async (req, res) => {
     }
 })
 
+// logout route, destroys current session. - Currently logout button has same functionality regardless of
+//whether a user is logged in. Future expansion possible for ensuring logic changes based on logged in status.
 router.post('/logout', auth, async (req, res) => {
     // console.log("logout hit")
     if (req.session.loggedIn) {
@@ -80,7 +84,7 @@ router.post('/logout', auth, async (req, res) => {
     }
 });
 
-//Deletes user based on id
+//Deletes user based on id - largely unused
 router.delete('/:id', async (req, res) => {
     try {
         const removedUser = await User.destroy({

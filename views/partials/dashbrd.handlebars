@@ -1,26 +1,17 @@
 <!-- Start blog post content here! -->
 <article class="media">
-    <figure class="media-left">
-        <p class="image is-48x48">
-            <img src="https://bulma.io/images/placeholders/96x96.png">
-        </p>
-    </figure>
     <div class="media-content">
         <div class="content">
-            <p>
+            <p class="is-size-3">
                 <strong>{{user.user_name}}</strong>
                 <br>
                 {{title}}
                 <br>
-                <span><small><a id="editPost" data-post="{{id}}">Edit</a></small></span>
-                <span><small><a id="removePost" data-post="{{id}}">Remove</a></small></span>
+            </p>
+            <p>
+                <span><a id="editPost" data-post="{{id}}">Edit</a></span>
+                <span><a id="removePost" data-post="{{id}}">Remove</a></span>
             </p>
         </div>
-        <!-- Start comment insert loaded comments into here-->  
-    {{#each comments as |comment|}}
-    {{> comment-block}}
-    {{!-- {{log comment}} --}}
-    {{/each}}
-    <!-- End comment -->
     </div>
 </article>

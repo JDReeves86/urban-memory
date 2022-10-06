@@ -3,6 +3,7 @@ const router = express.Router();
 const { User, Post, Comment } = require('../models');
 const auth = require('../utils/auth')
 
+// renders the partials for the page. All merely GET routes.
 // .render only the pieces that change. main.handlebars lives in layouts and stays there.
 router.get('/', async (req, res) => {
     try {

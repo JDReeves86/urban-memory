@@ -1,3 +1,5 @@
+//connects to SQL database specified in .env file.
+
 require('dotenv').config();
 
 const Sequelize = require('sequelize');

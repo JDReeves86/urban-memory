@@ -1,23 +1,25 @@
 <div class="container">
-    <div class="block mt-6">
-        <h1 class="title is-1">{{post.dataValues.title}}</h1>
-        <h2 class="title is-3">by: {{post.dataValues.user.dataValues.user_name}}</h2>
-    </div>
-    <div class="block">
-        <p class="is-size-4">{{post.dataValues.post}}</p>
-    </div>
-    <div class="block">
-        <p class="is-size-6 has-text-primary">{{post.dataValues.createdAt}}</p>
-        <small><a id="commentLink" data-post="{{post.dataValues.id}}">Comment</a></small>
+    <div class="content">
+        <div class="block mt-6">
+            <h1 class="title is-1">{{post.dataValues.title}}</h1>
+            <h2 class="title is-3">by: {{post.dataValues.user.dataValues.user_name}}</h2>
+        </div>
+        <div class="block">
+            <p class="is-size-4">{{post.dataValues.post}}</p>
+        </div>
+        <div class="block">
+            <p class="is-size-6 has-text-primary">{{format_date post.dataValues.createdAt}} {{format_time post.dataValues.createdAt}}</p>
+            <small><a id="commentLink" data-post="{{post.dataValues.id}}">Comment</a></small>
+        </div>
     </div>
 </div>
 {{#each post.dataValues.comments as |comment|}}
 <div class="container p-6">
     <article class="media">
         <figure class="media-left">
-            <p class="image is-48x48">
-              <img src="https://bulma.io/images/placeholders/96x96.png">
-            </p>
+            <span class="icon is-large has-text-danger">
+                <i class="fa-regular fa-2x fa-comment"></i>
+            </span>
         </figure>
         <div class="media-content">
             <div class="content">

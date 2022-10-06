@@ -1,12 +1,11 @@
 <div class="section is-medium">
     <h3 class="is-size-2">Welcome to the tech blog!</h3>
-    <h4 class="is-size-4 mb-5">Sign in or make an account to post some shit.</h4>
+    <h4 class="is-size-4 mb-5">Sign in or make an account to make some posts and leave a comment or two.</h4>
     <button class="button is-primary" id="signUpBtn">Sign up</button>
 </div>
 <div class="container">
     {{#each posts as |post|}}
     {{> preview}}
-    {{!-- {{log post}} --}}
     {{/each}}  
 </div>
 <script src="../public/landing.js"></script>

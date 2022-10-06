@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const { User, Post, Comment } = require('../../models');
 
-
+// used for retriving comments to display, not really used on front end, mostly for interrogation and testing on backend.
 router.get('/', async (req, res) => {
     try{
         const commentData = await Comment.findAll({
@@ -16,6 +16,7 @@ router.get('/', async (req, res) => {
     } catch(err) {res.status(500).json(err)}
 });
 
+// allows users to post comments. No PUT or DELETE routes at this time - optional future expansion.
 router.post('/', async (req, res) => {
     try {
         const userData = await User.findOne({

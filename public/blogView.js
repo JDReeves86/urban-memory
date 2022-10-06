@@ -1,3 +1,5 @@
+// logic for the view page of a specific blog post
+
 const commentHandler = async (clickedPost, comment) => {
     const commentData = {
         comment,
@@ -17,15 +19,15 @@ const commentHandler = async (clickedPost, comment) => {
 
 const closeModal = (ev) => {
     modal.setAttribute('class', 'modal');
-}
+};
 
 const openModal = (clicked) => {
     modal.setAttribute('class', 'modal is-active')
     modal.setAttribute('data-post', clicked)
-}
+};
 
 const saveComment = () => {
     const comment = commentInput.value.trim()
     const clicked = modal.getAttribute('data-post')
     commentHandler(clicked, comment)
-}
+};

@@ -1,11 +1,19 @@
+// selectors for modals. First is for commenting, second for editing blog post.
 const modal = document.getElementById('modal');
 const modalEditPost = document.getElementById('modalEditPost');
 
+// comment input on modal box
 const commentInput = document.getElementById('commentInput');
 
+// title and post input for editing a post modal.
 const editPostInput = document.getElementById('editPostInput');
 const editPostTitle = document.getElementById('editPostTitle');
 
+// selectors for making a new blog post.
+const blogText = document.getElementById('blogPost');
+const blogPostBtn = document.getElementById('blogPostBtn');
+
+// click checker for all buttons/links that get rendered on page.
 const clickChecker = (ev) => {
     ev.preventDefault()
     switch (ev.target.id) {
@@ -65,6 +73,7 @@ const clickChecker = (ev) => {
 
 document.body.addEventListener('click', clickChecker);
 
+//logic for buttons on main screen.
 const dashboardHandler = async (ev) => {
     ev.preventDefault();
     const response = await fetch('/dashboard', {
@@ -135,4 +144,4 @@ const logoutHandler = async (ev) => {
         else console.log('ERRROR buddy')
     }
     catch (err) {response.status(500).json(err)}
-}
+};
