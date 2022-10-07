@@ -90,28 +90,28 @@
     > The home page button will direct users to the landing page where they are prompted to either sign in or sign up to create posts. They will see existing posts and comments from this page.
 
 9. WHEN I click on an existing blog post THEN I am presented with the post title, contents, post creator’s username, and date created for that post and have the option to leave a comment.
-    > 
+    > Clicking on a post title from the home screen brings the user to a page where they can view the content, author, and any comments on the blog post.
 
 10. WHEN I enter a comment and click on the submit button while signed in THEN the comment is saved and the post is updated to display the comment, the comment creator’s username, and the date created.
-    >
+    > Users can slick on the comment link which will bring up a modal for them to enter their comment. Clicking the Save Changes button will submit the comment and the new comment will be displayed on the screen.
 
 11. WHEN I click on the dashboard option in the navigation THEN I am taken to the dashboard and presented with any blog posts I have already created and the option to add a new blog post
-    >
+    > Dashboard is only accessible if logged in. It will show any posts made by the user. From here they can make a new post, edit or remove existing posts.
 
 12. WHEN I click on the button to add a new blog post THEN I am prompted to enter both a title and contents for my blog post
-    >
+    > Clicking Make a Post will bring the user to a page where they can enter a title and blog post content. 
 
 13. WHEN I click on the button to create a new blog post THEN the title and contents of my post are saved and I am taken back to an updated dashboard with my new blog post
-    >
+    > Once the user has entered a title and content, they can save the post which will reload the dashboard and their newly created psot will be displayed.
 
 14. WHEN I click on one of my existing posts in the dashboard THEN I am able to delete or update my post and taken back to an updated dashboard
-    >
+    > Clicking on the edit link for a post will open a modal which the user can then rewrite their post and change the title.
 
 15. WHEN I click on the logout option in the navigation THEN I am signed out of the site
-    >
+    > Clicking logout button ends the users current session.
 
 16. WHEN I am idle on the site for more than a set time THEN I am able to view comments but I am prompted to log in again before I can add, update, or delete comments
-    >
+    > Cookies expire after 5 minutes and will automatically destroy the users current session, effectively logging them out.
 
 <br>
 <br>
@@ -122,7 +122,33 @@
 
 <br>
 
-N/A
+![myscreenshot](./Assets/Screenshot1.png)
+
+Landing page
+
+<br>
+
+![myscreenshot](./Assets/Screenshot2.png)
+
+Dashboard
+
+<br>
+
+![myscreenshot](./Assets/Screenshot3.png)
+
+Making a new blog post
+
+<br>
+
+![myscreenshot](./Assets/Screenshot4.png)
+
+Editing a post
+
+<br>
+
+![myscreenshot](./Assets/Screenshot5.png)
+
+Log out screen
 
 <br>
 
@@ -133,7 +159,7 @@ N/A
 <br>
 
 
-Link to Github repo: https://github.com/JDReeves86/fictional-memory-ECommerce-BackEnd
+Link to Github repo: https://github.com/JDReeves86/urban-memory-Blog
 
 Link to deployed app: https://agile-waters-90061.herokuapp.com/
 <br>
