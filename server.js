@@ -16,7 +16,7 @@ const sequelize = require('./config/connection')
 
 //sets up session storage
 const sess = {
-    secret: process.env.SESSION_SECRET,
+    secret: 'powertrip',
     cookie: {
         maxAge: 5 * 60 * 1000
     },
