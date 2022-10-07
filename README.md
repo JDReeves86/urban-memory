@@ -135,8 +135,7 @@ N/A
 
 Link to Github repo: https://github.com/JDReeves86/fictional-memory-ECommerce-BackEnd
 
-Link to video walkthrough: https://drive.google.com/file/d/1qZEcXgSSNjz4lG3aK4qoPhvBHOXmIgiP/view
-
+Link to deployed app: https://agile-waters-90061.herokuapp.com/
 <br>
 <br>
 <br>
